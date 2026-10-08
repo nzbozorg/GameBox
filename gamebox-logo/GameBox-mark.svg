@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="1024" height="1024"
+     role="img" aria-labelledby="gbTitle gbDesc">
+  <title id="gbTitle">GameBox</title>
+  <desc id="gbDesc">Hollow isometric cube with a game controller aligned to the right face.</desc>
+
+  <!--
+    Geometry (isometric, viewBox 0 0 100 100)
+    half width w = 25, face rise h = w*tan(30) = 14.4338, vertical edge k = 28
+    T(50,21.5662) L(25,36) R(75,36) C(50,50.4338) BL(25,64) BR(75,64) Bv(50,78.4338)
+    Bounding box: x 25..75, y 21.57..78.43  -> centred, fits Android adaptive safe circle
+    Controller plane = right face (R, BR, Bv, C); local axes:
+      x -> (cos30, -sin30) = (0.8660254, -0.5)   y -> (0, 1)
+    so the pad's long axis is exactly parallel to the face's diagonal edges.
+  -->
+
+  <g id="gamebox-mark">
+
+    <!-- three faces: light from upper-left -->
+    <g id="faces" stroke="none">
+      <path id="face-top"   d="M50 21.5662 L75 36 L50 50.4338 L25 36 Z"   fill="#7CFFB2" opacity="0.32"/>
+      <path id="face-left"  d="M25 36 L50 50.4338 L50 78.4338 L25 64 Z"    fill="#00A64B" opacity="0.30"/>
+      <path id="face-right" d="M75 36 L75 64 L50 78.4338 L50 50.4338 Z"    fill="#00D963" opacity="0.10"/>
+    </g>
+
+    <!-- wireframe: outer hexagon + the three inner edges meeting at the front-top corner -->
+    <g id="edges" fill="none" stroke="#00D963" stroke-width="3"
+       stroke-linejoin="round" stroke-linecap="round">
+      <path d="M50 21.5662 L25 36 L25 64 L50 78.4338 L75 64 L75 36 Z"/>
+      <path d="M50 50.4338 L25 36"/>
+      <path d="M50 50.4338 L75 36"/>
+      <path d="M50 50.4338 L50 78.4338"/>
+    </g>
+
+    <!-- controller, drawn flat inside the right face (never crosses its edges) -->
+    <g id="controller" transform="matrix(0.8660254 -0.5 0 1 62.5 55.7669)">
+      <path fill="#00D963" fill-rule="evenodd" d="
+        M-6.8 -6.2
+        H6.8
+        C9.6 -6.2 11.4 -4.4 11.4 -1.6
+        C11.4 1.6 10.8 4.0 9.8 6.2
+        C9.1 7.8 8.0 9.1 6.6 9.1
+        C5.2 9.1 4.5 7.6 4.4 5.4
+        C4.35 4.4 3.9 3.9 3.0 3.9
+        Q0 3.2 -3.0 3.9
+        C-3.9 3.9 -4.35 4.4 -4.4 5.4
+        C-4.5 7.6 -5.2 9.1 -6.6 9.1
+        C-8.0 9.1 -9.1 7.8 -9.8 6.2
+        C-10.8 4.0 -11.4 1.6 -11.4 -1.6
+        C-11.4 -4.4 -9.6 -6.2 -6.8 -6.2
+        Z
+        M-6.5 -3.65 L-4.7 -3.65 L-4.7 -2.2 L-3.25 -2.2 L-3.25 -0.4 L-4.7 -0.4
+        L-4.7 1.05 L-6.5 1.05 L-6.5 -0.4 L-7.95 -0.4 L-7.95 -2.2 L-6.5 -2.2 Z
+        M2.85 -2.9 A1.45 1.45 0 1 0 5.75 -2.9 A1.45 1.45 0 1 0 2.85 -2.9 Z
+        M5.45 -0.3 A1.45 1.45 0 1 0 8.35 -0.3 A1.45 1.45 0 1 0 5.45 -0.3 Z
+      "/>
+    </g>
+
+  </g>
+</svg>
